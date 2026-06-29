@@ -1,0 +1,37 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for IntervAI - AI Powered Interview Preparation Platform",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "intervai",
+    "express",
+    "mongodb",
+    "gemini",
+    "ai",
+    "mern"
+  ],
+  "author": "Aloke Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^2.10.0",
+    "axios": "^1.18.1",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "lucide-react": "^1.21.0",
+    "mongoose": "^9.7.2",
+    "multer": "^2.2.0",
+    "pdf-parse": "^2.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
