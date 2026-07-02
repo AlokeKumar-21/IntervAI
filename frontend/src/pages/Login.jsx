@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../hooks/useAuth";
-import { Loader2 } from "lucide-react";
+import {
+  Loader2,
+  Eye,
+  EyeOff,
+} from "lucide-react";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -14,6 +18,7 @@ export default function Login() {
   });
 
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -76,19 +81,35 @@ export default function Login() {
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300">
-              Password
-            </label>
+  <label className="mb-2 block font-medium text-slate-700 dark:text-slate-300">
+    Password
+  </label>
 
-            <input
-              type="password"
-              name="password"
-              required
-              value={formData.password}
-              onChange={handleChange}
-             className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 outline-none transition-all duration-300 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-400 dark:focus:bg-slate-800 dark:focus:ring-indigo-900/40"
-            />
-          </div>
+  <div className="relative">
+
+    <input
+      type={showPassword ? "text" : "password"}
+      name="password"
+      required
+      value={formData.password}
+      onChange={handleChange}
+      className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 pr-12 text-slate-900 outline-none transition-all duration-300 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-400 dark:focus:bg-slate-800 dark:focus:ring-indigo-900/40"
+    />
+
+    <button
+      type="button"
+      onClick={() => setShowPassword(!showPassword)}
+      className="absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 transition hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400"
+    >
+      {showPassword ? (
+        <EyeOff size={20} />
+      ) : (
+        <Eye size={20} />
+      )}
+    </button>
+
+  </div>
+</div>
 
           <button
   type="submit"

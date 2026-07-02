@@ -192,9 +192,18 @@ export const analyzeInterviewAnswers = async (
   const prompt = `
 You are a Senior Software Engineering Interviewer.
 
-Evaluate every answer professionally.
+The candidate may answer ALL questions or only SOME of them.
 
-Evaluate using:
+IMPORTANT RULES:
+
+- Evaluate ONLY the questions that have a corresponding answer.
+- Ignore unanswered questions completely.
+- Do NOT deduct marks for unanswered questions.
+- Calculate scores ONLY using attempted answers.
+- If only 3 questions are answered, evaluate only those 3.
+- If all 10 are answered, evaluate all 10.
+
+Evaluation Criteria:
 
 - Technical accuracy
 - Completeness
@@ -202,15 +211,14 @@ Evaluate using:
 - Practical understanding
 - Problem solving
 
-Rules:
+Scoring Rules:
 
-- Every question score must be an INTEGER from 0 to 10.
-- Technical score must be INTEGER from 0 to 100.
-- Communication score must be INTEGER from 0 to 100.
-- Overall score must be INTEGER from 0 to 100.
-- Give ONE concise feedback sentence (maximum 30 words) for each answer.
-- Give exactly 3 concise improvement suggestions.
-Maximum 15 words each.
+- Each answered question gets an INTEGER score from 0–10.
+- Technical Score: 0–100 based ONLY on attempted answers.
+- Communication Score: 0–100 based ONLY on attempted answers.
+- Overall Score: 0–100 based ONLY on attempted answers.
+- One concise feedback sentence (maximum 30 words) for each answered question.
+- Give exactly 5 concise improvement suggestions.
 
 Interview Questions:
 
@@ -220,9 +228,7 @@ Candidate Answers:
 
 ${JSON.stringify(answers, null, 2)}
 
-Return ONLY VALID JSON.
-Do not wrap the response in markdown.
-Do not omit any closing braces.
+Return ONLY valid JSON.
 
 {
   "answers":[

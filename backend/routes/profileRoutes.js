@@ -9,6 +9,7 @@ import {
   uploadResume,
   parseResume,
   analyzeResumeController,
+  removeResume,
 } from "../controllers/profileController.js";
 
 const router = express.Router();
@@ -31,6 +32,11 @@ router.put(
   protect,
   upload.single("resume"),
   uploadResume
+);
+router.delete(
+  "/resume",
+  protect,
+  removeResume
 );
 // Parse uploaded resume
 router.get(

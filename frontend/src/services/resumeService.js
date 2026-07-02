@@ -11,3 +11,7 @@ export const analyzeResume = async () => {
   const response = await api.post("/profile/resume/analyze");
   return response.data;
 };
+export const removeResume = async () => {
+  const response = await api.delete("/profile/resume");
+  return response.data;
+};

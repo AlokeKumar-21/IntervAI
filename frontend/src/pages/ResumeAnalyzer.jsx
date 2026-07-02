@@ -5,7 +5,8 @@ import {
   FileText,
   Loader2,
 } from "lucide-react";
-import { Check, Eye } from "lucide-react";
+import { Check, Eye, Trash2 } from "lucide-react";
+import { removeResume } from "../services/resumeService";
 
 import ATSCard from "../components/resume/ATSCard";
 import { useProfile } from "../hooks/useProfile";
@@ -67,6 +68,30 @@ export default function ResumeAnalyzer() {
       setLoading(false);
     }
   };
+  const handleRemoveResume = async () => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to remove your resume?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    setLoading(true);
+
+    await removeResume();
+
+    await reload();
+
+    setAnalysis(null);
+
+    toast.success("Resume removed successfully.");
+  } catch (err) {
+    console.error(err);
+    toast.error("Failed to remove resume.");
+  } finally {
+    setLoading(false);
+  }
+};
    //  ADD IT HERE
   const BASE_URL = import.meta.env.VITE_API_URL.replace("/api", "");
 
@@ -145,15 +170,27 @@ export default function ResumeAnalyzer() {
         </div>
       </div>
 
-      <a
-        href={`${BASE_URL}/${profile.resume}`}
-        target="_blank"
-        rel="noreferrer"
-        className="flex shrink-0 items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700"
-      >
-        <Eye size={16} />
-        View Resume
-      </a>
+      <div className="flex shrink-0 items-center gap-2">
+
+  <a
+    href={`${BASE_URL}/${profile.resume}`}
+    target="_blank"
+    rel="noreferrer"
+    className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700"
+  >
+    <Eye size={16} />
+    View Resume
+  </a>
+
+  <button
+    onClick={handleRemoveResume}
+    className="flex items-center gap-2 rounded-lg border border-red-500 px-4 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50 dark:hover:bg-red-900/20"
+  >
+    <Trash2 size={16} />
+    Remove
+  </button>
+
+</div>
     </div>
   </div>
 )}

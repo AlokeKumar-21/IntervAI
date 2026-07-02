@@ -1,4 +1,12 @@
-import { Camera, FileText, Upload, UserCircle } from "lucide-react";
+import {
+  Camera,
+  FileText,
+  Upload,
+  UserCircle,
+  Trash2,
+} from "lucide-react";
+
+import { removeResume } from "../../services/resumeService";
 
 export default function ProfileSidebar({
   profile,
@@ -29,6 +37,21 @@ export default function ProfileSidebar({
       console.error(error);
     }
   };
+  const handleRemoveResume = async () => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to remove your resume?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    await removeResume();
+
+    window.location.reload();
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <div className="space-y-6">
@@ -87,22 +110,34 @@ export default function ProfileSidebar({
   </div>
 
   {profile?.resume ? (
-    <div className="mt-4">
+   <div className="mt-4">
 
-      <p className="text-green-600 font-medium">
-        ✅ Resume Uploaded
-      </p>
+  <p className="font-medium text-green-600">
+    ✅ Resume Uploaded
+  </p>
 
-      <a
-       href={`${BASE_URL}/${profile.resume}`}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-2 inline-block text-indigo-600 hover:underline"
-      >
-        View Resume
-      </a>
+  <div className="mt-3 flex items-center gap-3">
 
-    </div>
+    <a
+      href={`${BASE_URL}/${profile.resume}`}
+      target="_blank"
+      rel="noreferrer"
+      className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700"
+    >
+      View Resume
+    </a>
+
+    <button
+      onClick={handleRemoveResume}
+      className="flex items-center gap-2 rounded-lg border border-red-500 px-4 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50 dark:hover:bg-red-900/20"
+    >
+      <Trash2 size={16} />
+      Remove
+    </button>
+
+  </div>
+
+</div>
   ) : (
     <p className="mt-3 text-sm text-slate-500">
       No resume uploaded.

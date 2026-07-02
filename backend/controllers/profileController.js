@@ -165,6 +165,25 @@ export const uploadResume = async (req, res) => {
     });
   }
 };
+export const removeResume = async (req, res) => {
+  try {
+    const user = req.user;
+
+    user.resume = "";
+
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Resume removed successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to remove resume",
+    });
+  }
+};
 // @desc Parse Resume
 // @route GET /api/profile/resume/parse
 // @access Private

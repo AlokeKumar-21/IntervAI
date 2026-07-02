@@ -157,10 +157,14 @@ export const submitInterview = async (req, res) => {
       });
     }
 
-    const feedback = await analyzeInterviewAnswers(
-      interview.questions,
-      answers
-    );
+    const attemptedAnswers = answers.filter(
+  (item) => item.answer && item.answer.trim() !== ""
+);
+
+const feedback = await analyzeInterviewAnswers(
+  interview.questions,
+  attemptedAnswers
+);
 
     // Normalize scores
 feedback.technicalScore = Math.max(
@@ -178,7 +182,7 @@ feedback.overallScore = Math.max(
   Math.min(100, Number(feedback.overallScore) || 0)
 );
 
-    interview.answers = answers.map((item, index) => ({
+    interview.answers = attemptedAnswers.map((item, index) => ({
       question: item.question,
       answer: item.answer,
       score: feedback.answers?.[index]?.score || 0,

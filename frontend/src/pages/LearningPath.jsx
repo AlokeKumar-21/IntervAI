@@ -33,25 +33,24 @@ export default function Learning() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 transition-colors duration-300 dark:bg-slate-950 dark:text-white">
+    <div className="min-h-screen bg-slate-50 transition-colors duration-300 dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-8 py-8">
 
         {/* Hero */}
 
         <div className="rounded-3xl bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 p-8 text-white shadow-xl">
-
           <p className="text-white/80">
             Personalized Learning Journey 🚀
           </p>
 
-          <h1 className="mt-2 text-5xl font-bold text-white">
-  Learning Path
-</h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/90">
-            Follow your AI-generated roadmap and
-            prepare systematically for interviews.
-          </p>
+          <h1 className="mt-2 text-5xl font-bold">
+            Learning Path
+          </h1>
 
+          <p className="mt-4 max-w-2xl text-lg text-white/90">
+            Follow your AI-generated roadmap and prepare systematically
+            for interviews.
+          </p>
         </div>
 
         {/* Overview Cards */}
@@ -60,11 +59,11 @@ export default function Learning() {
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:border-slate-700 dark:bg-slate-900">
 
-            <h3 className="text-slate-500">
+            <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400">
               Overall Progress
             </h3>
 
-            <p className="mt-2 text-4xl font-bold text-slate-900">
+            <p className="mt-2 text-4xl font-bold text-slate-900 dark:text-white">
               68%
             </p>
 
@@ -72,11 +71,11 @@ export default function Learning() {
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:border-slate-700 dark:bg-slate-900">
 
-            <h3 className="text-slate-500">
+            <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400">
               Skills Completed
             </h3>
 
-            <p className="mt-2 text-4xl font-bold text-slate-900">
+            <p className="mt-2 text-4xl font-bold text-slate-900 dark:text-white">
               12
             </p>
 
@@ -84,11 +83,11 @@ export default function Learning() {
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:border-slate-700 dark:bg-slate-900">
 
-            <h3 className="text-slate-500">
+            <h3 className="text-sm font-medium text-slate-500 dark:text-slate-400">
               Recommended Focus
             </h3>
 
-            <p className="mt-2 text-xl font-semibold text-indigo-600">
+            <p className="mt-2 text-xl font-semibold text-indigo-600 dark:text-indigo-400">
               System Design
             </p>
 
@@ -96,11 +95,11 @@ export default function Learning() {
 
         </div>
 
-        {/* Roadmap */}
+        {/* Learning Roadmap */}
 
         <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 dark:border-slate-700 dark:bg-slate-900">
 
-          <h2 className="text-2xl font-semibold text-slate-900">
+          <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
             Learning Roadmap
           </h2>
 
@@ -111,20 +110,21 @@ export default function Learning() {
                 key={item.title}
                 className="rounded-xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:border-indigo-300 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800"
               >
-
                 <div className="flex items-center justify-between">
 
                   <div>
-                    <h3 className="font-semibold text-slate-900">
+
+                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
                       {item.title}
                     </h3>
 
-                    <p className="text-sm text-slate-500">
+                    <p className="mt-1 text-sm text-slate-500 dark:text-slate-300">
                       {item.status}
                     </p>
+
                   </div>
 
-                  <span className="font-semibold text-slate-700">
+                  <span className="text-lg font-semibold text-slate-700 dark:text-slate-200">
                     {item.progress}%
                   </span>
 
@@ -156,43 +156,49 @@ export default function Learning() {
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 lg:col-span-2 dark:border-slate-700 dark:bg-slate-900">
 
-            <h2 className="text-xl font-semibold text-slate-900">
+            <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
               AI Recommendations
             </h2>
 
             <div className="mt-6 space-y-4">
 
-              <div className="rounded-xl bg-indigo-50 p-4 transition-colors duration-300 dark:bg-indigo-900/20">
-                <h3 className="font-semibold text-indigo-700">
+              <div className="rounded-xl bg-indigo-50 p-5 dark:bg-indigo-500/10 border border-transparent dark:border-indigo-500/20">
+
+                <h3 className="font-semibold text-indigo-700 dark:text-indigo-300">
                   System Design
                 </h3>
 
-                <p className="mt-1 text-slate-600 dark:text-slate-300">
-                  Focus on scalability, load balancing,
-                  caching, and database sharding concepts.
+                <p className="mt-2 text-slate-600 dark:text-slate-300">
+                  Focus on scalability, load balancing, caching,
+                  and database sharding concepts.
                 </p>
+
               </div>
 
-              <div className="rounded-xl bg-cyan-50 p-4 transition-colors duration-300 dark:bg-cyan-900/20">
-                <h3 className="font-semibold text-cyan-700">
+              <div className="rounded-xl bg-cyan-50 p-5 dark:bg-cyan-500/10 border border-transparent dark:border-cyan-500/20">
+
+                <h3 className="font-semibold text-cyan-700 dark:text-cyan-300">
                   React Optimization
                 </h3>
 
-                <p className="mt-1 text-slate-600 dark:text-slate-300">
-                  Revise memoization, lazy loading,
-                  and rendering optimization techniques.
+                <p className="mt-2 text-slate-600 dark:text-slate-300">
+                  Revise memoization, lazy loading, and rendering
+                  optimization techniques.
                 </p>
+
               </div>
 
-              <div className="rounded-xl bg-amber-50 p-4 transition-colors duration-300 dark:bg-amber-900/20">
-                <h3 className="font-semibold text-amber-700">
+              <div className="rounded-xl bg-amber-50 p-5 dark:bg-amber-500/10 border border-transparent dark:border-amber-500/20">
+
+                <h3 className="font-semibold text-amber-700 dark:text-amber-300">
                   Behavioral Round
                 </h3>
 
-                <p className="mt-1 text-slate-600 dark:text-slate-300">
-                  Practice STAR-based answers
-                  for leadership and teamwork questions.
+                <p className="mt-2 text-slate-600 dark:text-slate-300">
+                  Practice STAR-based answers for leadership and
+                  teamwork questions.
                 </p>
+
               </div>
 
             </div>
@@ -203,23 +209,23 @@ export default function Learning() {
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 dark:border-slate-700 dark:bg-slate-900">
 
-            <h2 className="text-xl font-semibold text-slate-900">
+            <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">
               Weekly Goal
             </h2>
 
             <div className="mt-5">
 
-              <p className="text-slate-600">
+              <p className="text-slate-600 dark:text-slate-300">
                 Complete 3 learning modules
               </p>
 
               <div className="mt-4 h-3 rounded-full bg-slate-200 dark:bg-slate-700">
 
-                <div className="h-3 w-[66%] rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500"></div>
+                <div className="h-3 w-[66%] rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500" />
 
               </div>
 
-              <p className="mt-2 text-sm text-slate-500">
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
                 2 of 3 modules completed
               </p>
 
