@@ -165,7 +165,7 @@ export const uploadResume = async (req, res) => {
     });
   }
 };
-import User from "../models/User.js"; // Make sure this import exists
+
 
 export const removeResume = async (req, res) => {
   try {
