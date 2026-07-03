@@ -26,7 +26,7 @@ export default function Home() {
     setLoading(false);
   };
 
-  // EVALUATE ANSWER
+  // EVALUATE ANSWERS
   const handleEvaluate = async (question, index) => {
     const res = await evaluateAnswer(
       question,
