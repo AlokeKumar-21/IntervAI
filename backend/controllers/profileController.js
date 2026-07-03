@@ -1,7 +1,6 @@
+import User from "../models/User.js";
 import fs from "fs/promises";
 import path from "path";
-import User from "../models/User.js";
-
 import { extractResumeText } from "../services/resumeParser.js";
 import { analyzeResume } from "../services/geminiService.js";
 
