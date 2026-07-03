@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    resumeOriginalName: {
+  type: String,
+  default: "",
+},
 
     resumeAnalysis: {
   atsScore: {

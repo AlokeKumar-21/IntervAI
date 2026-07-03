@@ -155,8 +155,10 @@ export default function ResumeAnalyzer() {
             </label>
             {profile?.resume && (
   <div className="mt-6 rounded-2xl border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/30">
-    <div className="flex items-center justify-between gap-3">
-      <div className="flex items-center gap-3 min-w-0">
+    <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      
+      {/* Resume Info */}
+      <div className="flex min-w-0 items-center gap-3">
         <Check className="h-8 w-8 shrink-0 text-green-600" />
 
         <div className="min-w-0">
@@ -164,33 +166,32 @@ export default function ResumeAnalyzer() {
             Resume Uploaded
           </h3>
 
-          <p className="truncate text-sm text-slate-600 dark:text-slate-400">
-            PDF Resume
-          </p>
+         <p className="truncate text-sm text-slate-600 dark:text-slate-400">
+  {profile?.resumeOriginalName || "PDF Resume"}
+</p>
         </div>
       </div>
 
-      <div className="flex shrink-0 items-center gap-2">
+      {/* Action Buttons */}
+      <div className="flex flex-wrap items-center gap-3 lg:justify-end">
+        <a
+          href={`${BASE_URL}/${profile.resume}`}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex h-10 items-center gap-2 rounded-lg bg-indigo-600 px-5 text-sm font-medium text-white transition hover:bg-indigo-700"
+        >
+          <Eye size={16} />
+          View Resume
+        </a>
 
-  <a
-    href={`${BASE_URL}/${profile.resume}`}
-    target="_blank"
-    rel="noreferrer"
-    className="flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700"
-  >
-    <Eye size={16} />
-    View Resume
-  </a>
-
-  <button
-    onClick={handleRemoveResume}
-    className="flex items-center gap-2 rounded-lg border border-red-500 px-4 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50 dark:hover:bg-red-900/20"
-  >
-    <Trash2 size={16} />
-    Remove
-  </button>
-
-</div>
+        <button
+          onClick={handleRemoveResume}
+          className="inline-flex h-10 items-center gap-2 rounded-lg border border-red-500 px-5 text-sm font-medium text-red-600 transition hover:bg-red-50 dark:hover:bg-red-900/20"
+        >
+          <Trash2 size={16} />
+          Remove
+        </button>
+      </div>
     </div>
   </div>
 )}

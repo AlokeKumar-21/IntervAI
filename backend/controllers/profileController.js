@@ -148,6 +148,7 @@ export const uploadResume = async (req, res) => {
     }
 
     user.resume = req.file.path.replace(/\\/g, "/");
+    user.resumeOriginalName = req.file.originalname;
 
     await user.save();
 
@@ -170,6 +171,7 @@ export const removeResume = async (req, res) => {
     const user = req.user;
 
     user.resume = "";
+    user.resumeOriginalName = "";
 
     await user.save();
 
