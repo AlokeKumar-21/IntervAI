@@ -166,21 +166,33 @@ export const uploadResume = async (req, res) => {
     });
   }
 };
+import User from "../models/User.js"; // Make sure this import exists
+
 export const removeResume = async (req, res) => {
   try {
-    const user = req.user;
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
 
     user.resume = "";
     user.resumeOriginalName = "";
+    user.resumeAnalysis = null;
 
     await user.save();
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: "Resume removed successfully",
     });
   } catch (error) {
-    res.status(500).json({
+    console.error("Remove Resume Error:", error);
+
+    return res.status(500).json({
       success: false,
       message: "Failed to remove resume",
     });
